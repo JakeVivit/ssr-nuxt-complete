@@ -11,7 +11,7 @@
         <span slot="label">首页</span>
       </tabbar-item>
 
-      <tabbar-item show-dot link="/login">
+      <tabbar-item show-dot link="/home/user">
         <x-icon type="ios-ionic-outline" size="30"></x-icon>
         <span slot="label">我的</span>
       </tabbar-item>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// import AppLogo from '~/components/AppLogo.vue'
 import { XHeader, Tabbar, TabbarItem } from "vux";
 
 export default {
@@ -42,13 +41,7 @@ export default {
     },
     methods:{
       timpHandle(){
-        if(this.$store.state.isLogin){
-          console.log('/user')
-          this.$router.push({path: '/home/user'})
-        }else{
-          console.log('/login')
-          this.$router.push({path: '/login'})
-        }
+        this.$router.push({path: '/home/user'})
       }
     }
 };
@@ -56,7 +49,6 @@ export default {
 
 <style lang="scss">
 .container {
-    /* min-height: 100vh; */
     justify-content: center;
     align-items: center;
     text-align: center;

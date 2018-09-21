@@ -30,6 +30,12 @@ module.exports = {
     '~/api/index.js'
   ],
 
+  //路由中间件--全局
+
+  // router: {
+  //   middleware :'auth'
+  // },
+
   css: [
     // CSS file in the project
     '@/assets/css/main.css',

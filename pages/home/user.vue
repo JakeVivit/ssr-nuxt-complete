@@ -6,29 +6,33 @@
 
 <script>
 export default {
-  asyncData (context) {
-    return { name: 'nuxt页面详情配置'}
-  },
-  
-  layout:'pageDetail',
+    middleware: 'auth',
+    asyncData(context) {
+        return { name: "nuxt页面详情配置" };
+    },
 
-  fetch () {
-    
-  },
-  head () {
-   return {
-       title: 'nuxt页面详情',
-       mate: [
-           { hid: 'description', name: 'description', content: 'My custom description' }
-       ]
-   }
-  },
-}
+    layout: "pageDetail",
+
+    fetch() {},
+
+    head() {
+        return {
+            title: "nuxt页面详情",
+            mate: [
+                {
+                    hid: "description",
+                    name: "description",
+                    content: "My custom description"
+                }
+            ]
+        };
+    }
+};
 </script>
 
 <style>
 .red {
-  color: red;
+    color: red;
 }
 </style>
 
