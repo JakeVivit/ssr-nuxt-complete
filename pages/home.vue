@@ -5,8 +5,9 @@
       <img class="default" src="~assets/images/timg.jpg" alt="">
     </div>
     <nuxt-child/>
-    <tabbar>
-      <tabbar-item link="/home">
+    
+    <tabbar style="position:fixed;">
+      <tabbar-item link="/home" selected>
         <x-icon type="ios-ionic-outline" size="30"></x-icon>
         <span slot="label">首页</span>
       </tabbar-item>
