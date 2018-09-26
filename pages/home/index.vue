@@ -3,7 +3,7 @@
         <swiper :auto="true" :loop="true" height="aspect-ratio" v-model="index" :min-moving-distance="120">
             <swiper-item v-for="(item, index) in swiper" :key="index">
                 <a :href="item.targetUrl">
-                    <img :src="'http://oss.zhulogic.com/' + item.webCoverFile.key">
+                    <img v-if="item.webCoverFile" :src="'http://oss.zhulogic.com/' + item.webCoverFile.key">
                 </a>
             </swiper-item>
         </swiper>
@@ -20,7 +20,6 @@
     </div>
 </template>
 <script>
-import http from "@/plugins/http";
 import { Swiper, SwiperItem, Card } from "vux";
 export default {
   data() {
@@ -31,14 +30,13 @@ export default {
       index: 0
     };
   },
-  async asyncData(context) {
-    let { data } = await http.ajax.get(
-      "/designer_api/show/page/v2?pageNum=0&pageSize=0&platform=web"
+  async asyncData({app}) {
+    let { data } = await app.$axios.get(
+      "https://b.zhulogic.com/designer_api/show/page/v2?pageNum=0&pageSize=0&platform=web"
     );
-
     return {
-      swiper: data.data.bannerShowResponseVOList,
-      skipDate: data.data.designerShowResponseVOList
+      swiper: data.data && data.data.bannerShowResponseVOList,
+      skipDate:  data.data && data.data.designerShowResponseVOList
     };
   },
   components: {

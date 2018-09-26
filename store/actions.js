@@ -6,7 +6,6 @@ export default {
 
     nuxtServerInit({ commit }, { req }) {
         if (req.session && req.session.accessToken) {
-            console.log(req.session.accessToken)
             commit(types.SET_USER, req.session.accessToken)
         }
     },
@@ -22,8 +21,10 @@ export default {
             throw error
         }
     },
-    checkLogin({ commit }) {
-    }
 
+    async getUser({commit}) {
+        const data = await this.$axios.$get('https://b.zhulogic.com/designer_api/user/info')
+        commit(types.GET_USER, data.data)
+    }
 }
 

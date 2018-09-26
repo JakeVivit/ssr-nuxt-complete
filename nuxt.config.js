@@ -1,8 +1,9 @@
-const vuxLoader = require('vux-loader');
+const vuxLoader = require('vux-loader')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 
 module.exports = {
+
     head: {
         title: 'ssr-nuxt-express',
         meta: [
@@ -30,6 +31,11 @@ module.exports = {
         '~/api/index.js'
     ],
 
+    modules:[
+        '@nuxtjs/axios',
+    ],
+
+
     //路由中间件--全局
 
     // router: {
@@ -46,23 +52,24 @@ module.exports = {
     ],
 
     plugins: [{
-            src: '@/plugins/vux-plugins',
+            src: '~/plugins/vux-plugins',
             ssr: false
         },
         {
-            src: '@/plugins/vux-components',
+            src: '~/plugins/vux-components',
             ssr: true
         },
         {
-            src: '@/plugins/common',
+            src: '~/plugins/http',
             ssr: true
         }
     ],
 
+    vendor: ['axios'],
+
     loading: { color: '#3B8070' },
 
     build: {
-        vendor: ['axios'],
         extend(config, { isDev, isClient }) {
             if (isDev && isClient) {
                 config.module.rules.push({

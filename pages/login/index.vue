@@ -14,7 +14,6 @@
     </div>
 </template>
 <script>
-import http from '~/plugins/http'
 import { XInput, Group, XButton, Alert, Toast } from "vux";
 import axios from "axios";
 export default {
@@ -40,8 +39,8 @@ export default {
                     messageType: 3,
                     phone: this.phone
                 };
-                let { data } = await http.ajas.post(
-                    "/designer_api/account/login_quick_code",
+                let { data } = await this.$axios.$post(
+                    "https://b.zhulogic.com/designer_api/account/login_quick_code",
                     params
                 );
                 if (data.data) {
@@ -67,8 +66,8 @@ export default {
                     messageType: 3,
                     phone: this.phone
                 };
-                let { data } = await axios.post(
-                    "http://test.zhulogic.com/designer_api/account/login_quick",
+                let data = await this.$axios.$post(
+                    "https://b.zhulogic.com/designer_api/account/login_quick",
                     params
                 );
                 if (data.data) {

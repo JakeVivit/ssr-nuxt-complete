@@ -8,7 +8,9 @@
 export default {
     middleware: 'auth',
     asyncData(context) {
-        return { name: "nuxt页面详情配置" };
+        return { 
+            name: "nuxt页面详情配置"
+        };
     },
 
     layout: "pageDetail",

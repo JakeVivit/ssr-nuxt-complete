@@ -5,6 +5,7 @@ import actions from './actions'
 
 const state = {
     Authorization: null,
+    userInfo: null,
     user: '',
     isLogin: false
 }

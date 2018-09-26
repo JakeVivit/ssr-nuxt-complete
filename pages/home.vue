@@ -2,7 +2,8 @@
   <div class="container">
     <x-header :title="title" :left-options="topBar"></x-header>
     <div class="rightUserimg" @click="timpHandle">
-      <img class="default" src="~assets/images/timg.jpg" alt="">
+      <img v-if="!$store.userInfo" class="default" src="~assets/images/timg.jpg" alt="">
+      <img v-if="$store.userInfo && $store.userInfo.avatarFile" class="default" :src="'http://oss.zhulogic.com/' + $store.userInfo.avatarFile.key" alt="">
     </div>
     <nuxt-child/>
     
@@ -38,7 +39,9 @@ export default {
         TabbarItem
     },
     fetch({store}) {
-      return store.dispatch('checkLogin');
+      if(store.state.Authorization){
+        return store.dispatch('getUser');
+      }
     },
     methods:{
       timpHandle(){
