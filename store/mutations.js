@@ -8,8 +8,8 @@ export default {
     [types.GET_USER](state, data){
         state.userInfo = data;
     },
-    [types.CHECK_LOGIN](state, data) {
-        Vue.set(state, 'isLogin', data)
+    [types.CLEAR_USER](state, data) {
+        state.Authorization = data;
     }
 }
 

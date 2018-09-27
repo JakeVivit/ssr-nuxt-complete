@@ -1,6 +1,5 @@
 
 import * as types from './mutation-types'
-import axios from 'axios'
 
 export default {
 
@@ -11,8 +10,9 @@ export default {
     },
 
     async setUser( { commit }, data) {
+        console.log(44444)
         try {
-            const res = await axios.post('/api/login', data)
+            const res = await this.$axios.$post('/api/login', data)
             commit(types.SET_USER, res.data)
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -20,11 +20,21 @@ export default {
             }
             throw error
         }
+        console.log(55555)
     },
 
     async getUser({commit}) {
+        console.log(22222)
         const data = await this.$axios.$get('https://b.zhulogic.com/designer_api/user/info')
-        commit(types.GET_USER, data.data)
+        commit(types.GET_USER, data.data);
+        console.log(33333)
+    },
+
+    async logout({commit}) {
+        await this.$axios.$post.apply('api/logout');
+        commit(types.CLEAR_USER, null);  
+        commit(types.SET_USER, null)
+        this.$router.push({path: '/home'});
     }
 }
 

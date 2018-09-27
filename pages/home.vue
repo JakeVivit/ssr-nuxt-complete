@@ -2,8 +2,8 @@
   <div class="container">
     <x-header :title="title" :left-options="topBar"></x-header>
     <div class="rightUserimg" @click="timpHandle">
-      <img v-if="!$store.userInfo" class="default" src="~assets/images/timg.jpg" alt="">
-      <img v-if="$store.userInfo && $store.userInfo.avatarFile" class="default" :src="'http://oss.zhulogic.com/' + $store.userInfo.avatarFile.key" alt="">
+      <img v-if="!$store.state.userInfo" class="default" src="~assets/images/timg.jpg" alt="">
+      <img v-if="$store.state.userInfo && $store.state.userInfo.avatarFile" class="default" :src="'http://oss.zhulogic.com/' + $store.state.userInfo.avatarFile.key" alt="">
     </div>
     <nuxt-child/>
     

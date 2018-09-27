@@ -72,8 +72,9 @@ export default {
                 );
                 if (data.data) {
                     //存储token
-                    this.$store.dispatch('setUser', data.data);
-                    this.$router.push({path: '/home'})
+                    await this.$store.dispatch('setUser', data.data);
+                    this.$store.dispatch('getUser');
+                    this.$router.push({path: '/home'});
                 } else {
                     this.show = true;
                     this.$vux.toast.text("登录失败，请检查验证码！");

@@ -30,7 +30,7 @@ router.post('/login', (req, res) => {
 
 // Add POST - /api/logout
 router.post('/logout', (req, res) => {
-  delete req.session.authUser
+  delete req.session.accessToken
   res.json({ ok: true })
 })
 
