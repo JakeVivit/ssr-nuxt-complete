@@ -73,7 +73,6 @@ export default {
                 if (data.data) {
                     //存储token
                     await this.$store.dispatch('setUser', data.data);
-                    this.$store.dispatch('getUser');
                     this.$router.push({path: '/home'});
                 } else {
                     this.show = true;

@@ -7,8 +7,6 @@ export default function ({
   store
 }) {
   $axios.onRequest(config => {
-    console.log('Making request to ' + config.url)
-    console.log(store.state.Authorization)
     if (store.state.Authorization) {
         config.headers.common.Authorization = store.state.Authorization;
     }

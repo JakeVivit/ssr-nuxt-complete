@@ -25,60 +25,59 @@
 import { XHeader, Tabbar, TabbarItem } from "vux";
 
 export default {
-    data() {
-        return {
-            title: "ssr-nuxt",
-            topBar: {
-                showBack: false
-            }
-        };
-    },
-    components: {
-        XHeader,
-        Tabbar,
-        TabbarItem
-    },
-    fetch({store}) {
-      if(store.state.Authorization){
-        return store.dispatch('getUser');
+  middleware: "userinfo",
+  data() {
+    return {
+      title: "ssr-nuxt",
+      topBar: {
+        showBack: false
       }
-    },
-    methods:{
-      timpHandle(){
-        this.$router.push({path: '/home/user'})
-      }
+    };
+  },
+  components: {
+    XHeader,
+    Tabbar,
+    TabbarItem
+  },
+  fetch({ store }) {
+    if (store.state.Authorization) {
+      return store.dispatch("getUser");
     }
+  },
+  methods: {
+    timpHandle() {
+      this.$router.push({ path: "/home/user" });
+    }
+  }
 };
-
-
 </script>
 
 <style lang="scss">
 .container {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    .rightUserimg{
-      position: absolute;
-      top: 9px;
-      right:10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #1fbca2;
-      img.default{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .rightUserimg {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #1fbca2;
+    img.default {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
 }
 
 .links {
-    padding-top: 15px;
+  padding-top: 15px;
 }
-.vux-header .vux-header-title>span{
+.vux-header .vux-header-title > span {
   font-size: 25px;
 }
 </style>
